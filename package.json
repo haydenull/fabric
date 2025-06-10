@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "haydenull's eslint config",
   "bin": {
-    "haydenull-fabric": "./dist/cli.mjs"
+    "haydenull-fabric": "./dist/cli/index.mjs"
   },
   "scripts": {
     "build": "tsup",
@@ -13,8 +13,8 @@
     "./package.json": "./package.json",
     "./tsconfig/tsconfig.json": "./tsconfig/tsconfig.json",
     ".": {
-      "import": "./dist/cli.mjs",
-      "require": "./dist/cli.js"
+      "import": "./dist/cli/index.mjs",
+      "require": "./dist/cli/index.js"
     },
     "./eslint": {
       "import": "./dist/eslint/index.mjs",
@@ -48,7 +48,7 @@
   "typesVersions": {
     "*": {
       "*": [
-        "./dist/cli.d.ts"
+        "./dist/cli/index.d.ts"
       ],
       "eslint": [
         "./dist/eslint/index.d.ts"

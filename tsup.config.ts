@@ -2,7 +2,7 @@ import { defineConfig } from 'tsup'
 
 export default defineConfig({
   entry: [
-    'src/cli.ts',
+    'src/cli/index.ts',
     'src/eslint/index.ts',
     'src/eslint/basic.ts',
     'src/eslint/react.ts',
