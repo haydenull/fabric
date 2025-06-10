@@ -1,5 +1,6 @@
-/** @type {import("prettier").Config} */
-module.exports = {
+import type { Config } from 'prettier'
+
+export default {
   plugins: [
     '@trivago/prettier-plugin-sort-imports',
     // https://github.com/tailwindlabs/prettier-plugin-tailwindcss#compatibility-with-other-prettier-plugins
@@ -17,4 +18,4 @@ module.exports = {
   semi: false,
   importOrder: ['<THIRD_PARTY_MODULES>', '^@/(.*)$', '^[./]'],
   importOrderSeparation: true,
-}
+} satisfies Config

@@ -9,10 +9,9 @@
 // test: Adding missing tests or correcting existing tests
 // perf: performance improvements
 // chore: gitignore changes
-
-const chalk = require('chalk')
-const { readFileSync } = require('fs')
-const path = require('path')
+import chalk from 'chalk'
+import { readFileSync } from 'node:fs'
+import path from 'node:path'
 
 const verifyCommit = () => {
   const msgPath = path.resolve('.git/COMMIT_EDITMSG')
@@ -24,9 +23,7 @@ const verifyCommit = () => {
   if (!commitRE.test(msg)) {
     console.log()
     console.error(
-      `  ${chalk.bgRed.white(' ERROR ')} ${chalk.red(
-        `invalid commit message format.`,
-      )}\n\n${chalk.red(
+      `  ${chalk.bgRed.white(' ERROR ')} ${chalk.red(`invalid commit message format.`)}\n\n${chalk.red(
         `  Proper commit message format is required for automated changelog generation. Examples:\n\n`,
       )}
       ${chalk.green(`[revert: ?]<type>[(scope)?]: [<emoji>]<message>`)}
@@ -37,13 +34,11 @@ const verifyCommit = () => {
       ${chalk.green(`refactor(compiler): refactor some code`)}
       ${chalk.green(`test(compiler): add some tests`)}
       ${chalk.green(`chore(compiler): Made some changes to the scaffolding`)}
-      ${chalk.green(
-        `Other commit types: perf, workflow, build, ci, typos, types, wip, release, dep\n`,
-      )}
+      ${chalk.green(`Other commit types: perf, workflow, build, ci, typos, types, wip, release, dep\n`)}
       ${chalk.blue(`See https://github.com/vuejs/core/blob/main/.github/commit-convention.md\n`)}`,
-    );
+    )
     process.exit(1)
   }
 }
 
-module.exports = verifyCommit
+export default verifyCommit

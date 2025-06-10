@@ -1,14 +1,82 @@
 {
   "name": "@haydenull/fabric",
-  "version": "0.2.7",
+  "version": "1.0.0",
   "description": "haydenull's eslint config",
-  "main": "index.js",
   "bin": {
-    "haydenull-fabric": "./cli.js"
+    "haydenull-fabric": "./dist/cli.mjs"
   },
   "scripts": {
+    "build": "tsup",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "exports": {
+    "./package.json": "./package.json",
+    "./tsconfig/tsconfig.json": "./tsconfig/tsconfig.json",
+    ".": {
+      "import": "./dist/cli.mjs",
+      "require": "./dist/cli.js"
+    },
+    "./eslint": {
+      "import": "./dist/eslint/index.mjs",
+      "require": "./dist/eslint/index.js"
+    },
+    "./eslint/basic": {
+      "import": "./dist/eslint/basic.mjs",
+      "require": "./dist/eslint/basic.js"
+    },
+    "./eslint/react": {
+      "import": "./dist/eslint/react.mjs",
+      "require": "./dist/eslint/react.js"
+    },
+    "./eslint/ts": {
+      "import": "./dist/eslint/ts.mjs",
+      "require": "./dist/eslint/ts.js"
+    },
+    "./eslint/vue": {
+      "import": "./dist/eslint/vue.mjs",
+      "require": "./dist/eslint/vue.js"
+    },
+    "./prettier": {
+      "import": "./dist/prettier/index.mjs",
+      "require": "./dist/prettier/index.js"
+    },
+    "./cz": {
+      "import": "./dist/cz/index.mjs",
+      "require": "./dist/cz/index.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/cli.d.ts"
+      ],
+      "eslint": [
+        "./dist/eslint/index.d.ts"
+      ],
+      "eslint/basic": [
+        "./dist/eslint/basic.d.ts"
+      ],
+      "eslint/react": [
+        "./dist/eslint/react.d.ts"
+      ],
+      "eslint/ts": [
+        "./dist/eslint/ts.d.ts"
+      ],
+      "eslint/vue": [
+        "./dist/eslint/vue.d.ts"
+      ],
+      "prettier": [
+        "./dist/prettier/index.d.ts"
+      ],
+      "cz": [
+        "./dist/cz/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist/",
+    "tsconfig/"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/haydenull/eslint-config.git"
@@ -25,28 +93,49 @@
   },
   "homepage": "https://github.com/haydenull/eslint-config#readme",
   "dependencies": {
+    "@eslint/js": "^9.28.0",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.34.0",
     "@typescript-eslint/parser": "^6.0.0",
     "chalk": "^4.1.2",
     "commander": "^11.0.0",
     "czg": "^1.7.1",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "local-pkg": "^0.4.3",
-    "prettier-plugin-classnames": "^0.6.6",
-    "prettier-plugin-merge": "^0.6.0",
-    "prettier-plugin-tailwindcss": "^0.4.0"
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-vue": "^10.2.0",
+    "globals": "^16.2.0",
+    "local-pkg": "^1.1.1",
+    "prettier-plugin-classnames": "^0.7.8",
+    "prettier-plugin-merge": "^0.7.4",
+    "prettier-plugin-tailwindcss": "^0.6.12",
+    "typescript-eslint": "^8.34.0"
   },
   "peerDependencies": {
-    "eslint": ">=7.4.0"
+    "eslint": ">=9.0.0",
+    "prettier": ">=3.0.0"
   },
   "devDependencies": {
-    "eslint": "^8.45.0",
-    "prettier": "^3.0.0"
+    "@types/node": "^24.0.0",
+    "eslint": "^9.28.0",
+    "prettier": "^3.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
   },
   "engines": {
-    "node": ">=14.0.0"
+    "node": ">=20.0.0"
+  },
+  "cspell": {
+    "version": "0.2",
+    "ignorePaths": [],
+    "dictionaryDefinitions": [],
+    "dictionaries": [],
+    "words": [
+      "EDITMSG",
+      "haydenull",
+      "trivago"
+    ],
+    "ignoreWords": [],
+    "import": []
   }
 }

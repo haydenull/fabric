@@ -1,9 +1,10 @@
+import type { CommitizenGitOptions } from 'czg'
+
 // https://cz-git.qbb.sh/cli/
-/** @type {import('czg').CommitizenGitOptions} */
-module.exports = {
+export default {
   alias: { fd: 'docs: fix typos' },
   messages: {
-    type: 'Select the type of change that you\'re committing:',
+    type: "Select the type of change that you're committing:",
     scope: 'Denote the SCOPE of this change (optional):',
     customScope: 'Denote the SCOPE of this change:',
     subject: 'Write a SHORT, IMPERATIVE tense description of the change:\n',
@@ -14,7 +15,7 @@ module.exports = {
     footer: 'List any ISSUES by this change. E.g.: #31, #34:\n',
     generatingByAI: 'Generating your AI commit subject...',
     generatedSelectByAI: 'Select suitable subject by AI generated:',
-    confirmCommit: 'Are you sure you want to proceed with the commit above?'
+    confirmCommit: 'Are you sure you want to proceed with the commit above?',
   },
   types: [
     { value: 'feat', name: 'feat:     A new feature', emoji: ':sparkles:' },
@@ -22,12 +23,24 @@ module.exports = {
     { value: 'docs', name: 'docs:     Documentation only changes', emoji: ':memo:' },
     { value: 'style', name: 'style:    Format some code(white space, formatting, missing semicolon)', emoji: ':art:' },
     { value: 'refactor', name: 'refactor: Refactor some code', emoji: ':recycle:' },
-    { value: 'build', name: 'build:    Changes that affect the build system or external dependencies', emoji: ':package:' },
-    { value: 'ci', name: 'ci:       Changes to our CI configuration files and scripts', emoji: ':construction_worker:' },
+    {
+      value: 'build',
+      name: 'build:    Changes that affect the build system or external dependencies',
+      emoji: ':package:',
+    },
+    {
+      value: 'ci',
+      name: 'ci:       Changes to our CI configuration files and scripts',
+      emoji: ':construction_worker:',
+    },
     { value: 'test', name: 'test:     Adding missing tests or correcting existing tests', emoji: ':white_check_mark:' },
     { value: 'perf', name: 'perf:     A code change that improves performance', emoji: ':zap:' },
     { value: 'revert', name: 'revert:   Reverts a previous commit', emoji: ':rewind:' },
-    { value: 'chore', name: 'chore:    Other changes that don\'t modify src or test files(gitignore changes)', emoji: ':wrench:' },
+    {
+      value: 'chore',
+      name: "chore:    Other changes that don't modify src or test files(gitignore changes)",
+      emoji: ':wrench:',
+    },
   ],
   useEmoji: true,
   emojiAlign: 'center',
@@ -60,5 +73,5 @@ module.exports = {
   defaultBody: '',
   defaultIssues: '',
   defaultScope: '',
-  defaultSubject: ''
-}
+  defaultSubject: '',
+} satisfies CommitizenGitOptions

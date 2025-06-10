@@ -5,30 +5,43 @@ A collection of configuration files containing prettier, eslint, tsconfig and mo
 
 Install the package
 ```shell
-pnpm add @haydenull/fabric -D
+pnpm add @haydenull/fabric eslint prettier -D
 ```
 
 ## ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white) eslint-config
 
-in `.eslintrc.cjs`
+in `eslint.config.mjs`
 
 ```js
-module.exports = {
-  extends: [require.resolve('@haydenull/fabric/eslint/react')],
-}
+import haydenullLint from '@haydenull/fabric/eslint/react'
+import { defineConfig, globalIgnores } from 'eslint/config'
+
+export default defineConfig([
+  haydenullLint,
+  globalIgnores(['public', 'dist']),
+])
 ```
 
 ## ![Prettier](https://img.shields.io/badge/Prettier-1a2b34?style=for-the-badge&logo=prettier&logoColor=white) prettier
 
-in `prettier.config.cjs`
+in `prettier.config.mjs`
 
 ```js
-module.exports = {
-  ...require("@haydenull/fabric/prettier"),
+import haydenullPrettier from '@haydenull/fabric/prettier'
+
+export default {
+  ...haydenullPrettier,
   // docs: https://github.com/tailwindlabs/prettier-plugin-tailwindcss#sorting-classes-in-function-calls
   tailwindConfig: '.your-path/tailwind.config.js',
   tailwindFunctions: [], // ['cn', 'clsx']
 }
+```
+
+If you use pnpm to manage dependencies, due to the hoisting mechanism of pnpm, you need to add the following configuration to `.npmrc` to lift `@trivago/prettier-plugin-sort-imports` and `prettier-plugin-*` dependencies to the global level:
+
+```txt
+public-hoist-pattern[]=@trivago/prettier-plugin-sort-imports
+public-hoist-pattern[]=prettier-plugin-*
 ```
 
 ## ![Git](https://img.shields.io/badge/Git-e84e32?style=for-the-badge&logo=git&logoColor=white) verify commit
@@ -56,11 +69,13 @@ in `tsconfig.json`
 npm install -g czg
 ```
 
-2.in `cz.config.js`
+2.in `cz.config.mjs`
 ```js
-/** @type {import('czg').CommitizenGitOptions} */
-module.exports = {
-  ...require('@haydenull/fabric/cz'),
+import haydenullCz from '@haydenull/fabric/cz'
+
+
+export default {
+  ...haydenullCz,
   scopes: [/** your scopes */],
 }
 ```
